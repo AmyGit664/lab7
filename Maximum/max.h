@@ -1,13 +1,11 @@
 /*****************************************************************************/
 /*** fichier: max.h                                                        ***/
-/*** En-tête de max.c                                                      ***/
+/*** Fichier en-tête (header) 				                   ***/
 /*****************************************************************************/
 
 #ifndef H_MAX_H
 #define H_MAX_H
 
-extern int max(double, int, double);
-	/* MAX_H */
+void calcul_max (int *tab, int nb, int *max);
+
 #endif
-
-

@@ -1,0 +1,109 @@
+/******************* lab7: Compilation sous GCC, Débogage *********************/
+/*************************** Commandes utilisées ******************************/
+
+
+
+Objectif: Le but de ce TP est de savoir compiler les codes sources (fichiers.c) sous linux avec
+le compilateur GCC afin de tester les codes écrits dans ces fichiers et des les corriger en
+cas d'erreur avec le déboguer DDD.
+
+/*********************/
+/*** 1ère question ***/
+/*********************/
+
+Un fichier "max.c" est créé afin d'y écrire la fonction qui permet de calculer le maximum
+d'un tableau contenant N entiers. En parallèle, deux autres fichiers ont été créés. Le deuxième
+est un fichier en-tête "max.h" et le dernier est un fichier test qui a la même extension que celle
+du fichier source et qui permet d'appeler la ou les fonctions de ce fichier. Le fichier header
+ou en-tête contient le prototype des fonctions (ex: "void max (int t[], int n, int *max)" est
+un prototype.
+
+Avec la commande "vim", on crée le fichiers "max.c", "max.h" et "testmax.c" depuis le terminal.
+Une fois tous les fichiers remplis, pour compiler, il faudra tout d'abord inclure le fichier
+header dans les fichiers test et source grâce à "#include "max.h"" juste après les fichiers
+correspondant aux bibliothèques. Cela permettra au code source d'être modulaire.
+
+/*********************/
+/*** 2ème question ***/
+/*********************/
+
+Pour compiler, il faudra faire appel au compilateur en tapant "gcc .*c" et cela sort un fichier
+"a.out" qui est l'exécutable et pour l'exécuter, il suffit de taper la commande ./a.out. Pour
+choisir le nom de l'exécutable, il suffit d'ajouter l'option -o. Pour compiler en mode debug,
+l'option -g est nécessaire. En tout, la commande globale utilisée est: "gcc -g *.c -o maximum"
+avec maximum le nom de l'exécutable et "*.c" correspondant à tous les fichiers ayant l'extension
+.c.
+
+Une fois le code compilé et sans erreur, on fait appel au débogueur ddd en utilisant l'exécutable
+maximum => "ddd maximum". La console s'ouvre et on voit apparaître notre fonction main et il suffit
+d'appuyer sur run pour afficher le résultat de la fonction. (voir captures pour les résultats du
+déboguage de la fonction max).
+
+/*********************/
+/*** 3ème question ***/
+/*********************/
+
+Pour générer les fichiers de compilation intermédiaires, les commandes suivantes ont été tapées:
+* gcc -c *.c
+* gcc -E *.c
+* gcc -S *.c
+
+/*********************/
+/*** 4ème question ***/
+/*********************/
+
+* L'option -c génère les fichiers binaires d'extension *.o, "max.o" et "testmax.o" => assemblage
+* L'option -E appelle le préprocesseur mais ne compile pas donc pas de fichiers créés.
+* L'option -S génère des fichiers assembleurs "*.s"
+
+La compilation passe par plusieurs étapes avant d'aboutir au fichier exécutable, en produisant
+des fichiers de compilation inermédiaires:
+ 
+* La première étape exécutée est le préprocessing avec l'option -E. Dans cette étape, les directives 
+du processing sont exécutées c'est à dire les fonctions avant le main (#define, #include). 
+
+* La deuxième étape consiste à compiler le code avec l'option -S, traduisant le code source en un
+code assembleur.
+
+* La troisième étape concerne l'assemblage avec l'option -c. Le code assembleur est traduit en un
+objet de code.
+
+* Enfin l'édition des liens est la dernière étape permettant de produire des fichiers exécutables à
+partir des fichiers objet avec l'option -o.
+
+/*********************/
+/*** 5ème question ***/
+/*********************/
+
+C'est pendant l'exécution de la deuxième étape, c'est à dire l'assembleur que la fonction maxmin
+sera remplacée par le binaire correspondant.
+
+/*********************/
+/*** 6ème question ***/
+/*********************/
+
+Pour calculer la valeur min d'un tableau, il suffit de répéter les mêmes étapes que celles
+suivies pour calculer le max. Il faudra juste créer un nouveau projet pour y mettre les 3
+fichiers .c et .h
+
+Les résultats obtenus peuvent être visualisés dans les captures d'écran.
+
+/*********************/
+/*** 7ème question ***/
+/*********************/
+
+On crée également un autre projet incluant les fichiers "var.c", "var.h" et "testvar.c".
+On pourra visualiser les résultats avec les captures.
+
+/*********************/
+/*** 8ème question ***/
+/*********************/
+
+Cette fois-ci, on souhaiterait calculer et afficher le max, min et variance. Pour cela, on
+crée toujours un nouveau projet pour les 3 fichiers. Ensuite on rassemble toutes fonctions
+créées précédemment dans ces nouveaux fichiers.
+
+AN: Toutes les captures montrant les résultats de toutes les fonctions écrites ont été incluses
+dans le dossier "Pictures".
+
+
